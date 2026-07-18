@@ -1,0 +1,23 @@
+================= SWITCH CONFIG =================
+hostname SW1
+vlan 10
+ name SALES
+vlan 20
+ name HR
+interface FastEthernet0/1
+ description PC1
+ switchport mode access
+ switchport access vlan 10
+interface FastEthernet0/24
+ description TRUNK TO R1
+ switchport mode trunk
+================= ROUTER CONFIG =================
+hostname R1
+interface GigabitEthernet0/0.10
+ description VLAN10 SALES
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+interface GigabitEthernet0/0.20
+ description VLAN20 HR
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
